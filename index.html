@@ -1,0 +1,38 @@
+<html>
+	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<style type="text/css">
+		.audioButton {
+		    height: 100px;
+		    width: 100px;
+		    background-color: gray;
+		}
+	</style>
+	<body>
+		<div>
+			<button id="addButton">添加播放组件</button>
+			<button id="clearButton">清空</button>
+		</div>
+		<p />
+		<div id="soundPannels"></div>
+		<script type="text/javascript" src='simple-audio.js'></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$('#addButton').on('click',function(){
+					var playButton=$('<input type="image" class="audioButton" src="music_loading.png" />');
+					$('#soundPannels').append(playButton);
+					new SimpleAudio({
+						src:'http://od.qingting.fm/vod/00/00/0000000000000000000025253003_64.m4a',
+						element:playButton,
+						playImg:'play.png',
+						pauseImg:'pause.png'
+					});
+				});
+
+				$('#clearButton').on('click',function(){
+					$('#soundPannels').empty();
+				});
+			});		
+		</script>
+	</body>
+</html>
