@@ -1,12 +1,16 @@
 <html>
-	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
-	<style type="text/css">
-		.audioButton {
-		    height: 100px;
-		    width: 100px;
-		    background-color: gray;
-		}
-	</style>
+	<head>
+	 	<meta charset="utf-8">
+		<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+		<style type="text/css">
+			.audioButton {
+			    height: 100px;
+			    width: 100px;
+			    background-color: gray;
+			}
+		</style>	
+	</head>
+	
 	<body>
 		<div>
 			<button id="addButton">添加播放组件</button>
@@ -24,8 +28,13 @@
 					new SimpleAudio({
 						src:'http://od.qingting.fm/vod/00/00/0000000000000000000025253003_64.m4a',
 						element:playButton,
-						playImg:'play.png',
-						pauseImg:'pause.png'
+						setPlay:function(){
+							console.log('set play.');
+							$(playButton).attr('src','play.png');
+						},
+						setPause:function(){
+							$(playButton).attr('src','pause.png');
+						}
 					});
 				});
 

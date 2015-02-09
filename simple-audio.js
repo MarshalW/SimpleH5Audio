@@ -14,19 +14,26 @@ var SimpleAudio=function(params){
 	this.element=params.element;
 	this.audio=new Audio(params.src);
 	this.play=false;
-	this.playImg=params.playImg;
-	this.pauseImg=params.pauseImg;
+	// this.playImg=params.playImg;
+	// this.pauseImg=params.pauseImg;
+	this.setPlay=params.setPlay;
+	this.setPause=params.setPause;
+
+
 	var self=this;
 
 	$(this.audio).on('loadeddata',function(){
-		$(self.element).attr('src',self.playImg);
+		// $(self.element).attr('src',self.playImg);
+		self.setPlay();
 	});
 	$(this.audio).on('play',function(){
-		$(self.target).attr('src',self.pauseImg);
+		// $(self.target).attr('src',self.pauseImg);
+		self.setPause();
 		self.play=true;
 	});
 	$(this.audio).on('pause',function(){
-		$(self.target).attr('src',self.playImg);
+		self.setPlay();
+		// $(self.target).attr('src',self.playImg);
 		self.play=false;
 	});
 
